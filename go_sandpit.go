@@ -15,4 +15,7 @@ func main() {
 	fmt.Println("perim:", r.perim())
 	rp := &r
 	fmt.Println("area defered: ", rp.area())
+	c := circle{radius: 5}
+	measure(r)
+    measure(c)
 }
