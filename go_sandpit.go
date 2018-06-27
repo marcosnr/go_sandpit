@@ -10,5 +10,7 @@ func main() {
 	// Testgo()
 	// Testpo()
 	// Testst()
-	testinterf()
+	// testinterf()
+	testerr()
+
 }
