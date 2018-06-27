@@ -11,6 +11,6 @@ func main() {
 	// Testpo()
 	// Testst()
 	// testinterf()
-	testerr()
-
+	// testerr()
+	testroutines()
 }
