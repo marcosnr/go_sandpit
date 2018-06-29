@@ -9,7 +9,7 @@ type person struct {
 	age  int
 }
 
-//Testpo to test go capabilities
+// Testst to test go capabilities
 func Testst() {
 	fmt.Println(person{"Bob", 20})
 	s := person{name: "Sean", age: 50}
