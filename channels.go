@@ -3,13 +3,16 @@ package main
 import "fmt"
 
 func testchannels() {
-	messages := make(chan string)
-	// Send a value into a channel using the channel <- syntax. Here we send "ping" to the messages channel we made above, from a new goroutine.
 
-	go func() { messages <- "ping" }()
 	// The <-channel syntax receives a value from the channel. Here we’ll receive the "ping" message we sent above and print it out.
+	messages := make(chan string, 2)
+	// Because this channel is buffered, we can send these values into the channel without a corresponding concurrent receive.
 
-	msg := <-messages
-	fmt.Println(msg)
+	messages <- "buffered"
+	messages <- "channel"
+	// Later we can receive these two values as usual.
+
+	fmt.Println(<-messages)
+	fmt.Println(<-messages)
 
 }
