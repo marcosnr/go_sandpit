@@ -12,5 +12,6 @@ func main() {
 	// Testst()
 	// testinterf()
 	// testerr()
-	testroutines()
+	// testroutines()
+	testchannels()
 }
