@@ -1,10 +1,10 @@
 package main
 
-import (
-	"fmt"
-)
+import humanize "github.com/dustin/go-humanize"
+import "fmt"
 
 func main() {
 	fmt.Printf("Hola Mundo\n")
-	testNonblock()
+	fmt.Printf("That file is %s.\n", humanize.Bytes(82854982))
+	// testNonblock()
 }
