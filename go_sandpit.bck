@@ -1,0 +1,76 @@
+
+package main
+
+import (
+	 humanize "github.com/dustin/go-humanize"
+	 "fmt"
+	 log "github.com/sirupsen/logrus"
+	 "encoding/base64"
+	 "github.com/aws/aws-sdk-go/aws" 
+	 "github.com/aws/aws-sdk-go/aws/session"
+	 "github.com/aws/aws-sdk-go/service/kms"
+	 "github.com/aws/aws-sdk-go/service/kms/kmsiface"
+	 "github.com/pkg/errors"
+ 
+)
+
+func main() {
+	log.SetFormatter(&log.TextFormatter{}) 
+	log.SetOutput(os.Stdout)
+	log.SetLevel(log.DebugLevel)
+	fmt.Printf("Hola Mundo\n")
+	fmt.Printf("That file is %s.\n", humanize.Bytes(82854982))
+	svc: kms.New(session.Must(session.NewSession(cfgs...)))
+	var cipherText="asdfadsfsd"
+	data, err := base64.StdEncoding.DecodeString(cipherText)
+	if err != nil {
+		fmt.Println("failed StdEncoding:", err)
+	}
+
+	resp, err := svc.Decrypt(&kms.DecryptInput{
+		CiphertextBlob: data,
+	})
+	if err != nil {
+		fmt.Println("failed Decrypt:", err)
+	}
+}
+  
+//aws ec2
+package main
+
+import (
+        "fmt"
+        "context"
+				// "github.com/aws/aws-lambda-go/lambda"
+				"github.com/aws/aws-sdk-go/aws/session"
+				"github.com/aws/aws-sdk-go/service/ec2"
+)
+
+type MyEvent struct {
+        Name string `json:"name"`
+}
+
+func HandleRequest(ctx context.Context, name MyEvent) (string, error) {
+        return fmt.Sprintf("Hello %s!", name.Name ), nil
+}
+
+func main() {
+		fmt.Printf("Hola Mundo\n")
+	//if build *.go, then you can use from other files
+	// fmt.Printf(stringutil.Reverse("!oG ,olleH"))
+	// simpleValues()
+	// lambda.Start(HandleRequest)
+    // Load session from shared config
+    sess := session.Must(session.NewSessionWithOptions(session.Options{
+			SharedConfigState: session.SharedConfigEnable,
+	}))
+
+	// Create new EC2 client
+	ec2Svc := ec2.New(sess)
+	result, err := ec2Svc.DescribeInstances(nil)
+	if err != nil {
+			fmt.Println("Error", err)
+	} else {
+			fmt.Println("Success", result)
+	}
+}

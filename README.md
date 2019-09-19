@@ -2,12 +2,21 @@
 
 ## creating sandpit to learn to beautiful language of go
 
-so far learning the native and simple idiomatics... 
+so far learning the native and simple idiomatics...
 
-# Resources
+```bash
+cd hello (since there can only be one main in a folder?)
+go run hello-world.go
+go build hello-world.go
+./hello-world```
 
-https://gobyexample.com/errors
+to run the other ones:
+```go run *.go
+go build *.go```
+## Resources
 
+https://gobyexample.com/
+https://github.com/golang-standards/project-layout
 http://www.golang-book.com/books/intro/
 
 https://github.com/fstab/go-programming-for-java-developers
